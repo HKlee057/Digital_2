@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\hecto\AppData\Local\Temp\s3ng.o
+$C:\Users\hecto\AppData\Local\Temp\s7no.o
 end_init CODE 0 0 0 3 2
 $dist/default/production\Laboratorio_2.X.production.o
 cinit CODE 0 7FC 7FC 4 2
@@ -63,11 +63,11 @@ STRING 800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Laboratorio_2.X.production.o
-7FC cinit CODE >406:C:\Users\hecto\AppData\Local\Temp\s3ng.s
-7FC cinit CODE >409:C:\Users\hecto\AppData\Local\Temp\s3ng.s
-7FC cinit CODE >415:C:\Users\hecto\AppData\Local\Temp\s3ng.s
-7FC cinit CODE >417:C:\Users\hecto\AppData\Local\Temp\s3ng.s
-7FD cinit CODE >418:C:\Users\hecto\AppData\Local\Temp\s3ng.s
+7FC cinit CODE >406:C:\Users\hecto\AppData\Local\Temp\s7no.s
+7FC cinit CODE >409:C:\Users\hecto\AppData\Local\Temp\s7no.s
+7FC cinit CODE >415:C:\Users\hecto\AppData\Local\Temp\s7no.s
+7FC cinit CODE >417:C:\Users\hecto\AppData\Local\Temp\s7no.s
+7FD cinit CODE >418:C:\Users\hecto\AppData\Local\Temp\s7no.s
 7F9 maintext CODE >12:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
 7F9 maintext CODE >13:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
 7F9 maintext CODE >14:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
@@ -90,26 +90,26 @@ __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\hecto\AppData\Local\Temp\s3ng.o
+___sp 0 0 STACK 2 stack C:\Users\hecto\AppData\Local\Temp\s7no.o
 _main FF2 0 CODE 0 maintext dist/default/production\Laboratorio_2.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
-start 0 0 CODE 0 init C:\Users\hecto\AppData\Local\Temp\s3ng.o
+start 0 0 CODE 0 init C:\Users\hecto\AppData\Local\Temp\s7no.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s3ng.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s3ng.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s3ng.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s3ng.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s3ng.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s3ng.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s7no.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s7no.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s7no.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s7no.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s7no.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s7no.o
 wtemp0 7E 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
 __Hclrtext 0 0 ABS 0 clrtext -
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - C:\Users\hecto\AppData\Local\Temp\s3ng.o
-___stacklo 0 0 ABS 0 - C:\Users\hecto\AppData\Local\Temp\s3ng.o
+___stackhi 0 0 ABS 0 - C:\Users\hecto\AppData\Local\Temp\s7no.o
+___stacklo 0 0 ABS 0 - C:\Users\hecto\AppData\Local\Temp\s7no.o
 start_initialization FF8 0 CODE 0 cinit dist/default/production\Laboratorio_2.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\hecto\AppData\Local\Temp\s3ng.o
+___int_sp 0 0 STACK 2 stack C:\Users\hecto\AppData\Local\Temp\s7no.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -149,7 +149,7 @@ __S1 0 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
 __Lintentry 0 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\hecto\AppData\Local\Temp\s3ng.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\hecto\AppData\Local\Temp\s7no.o
 __pmaintext FF2 0 CODE 0 maintext dist/default/production\Laboratorio_2.X.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 0 0 CONFIG 0 config -
