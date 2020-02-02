@@ -29,7 +29,25 @@
 // Use project enums instead of #define for ON and OFF.
 
 #include <xc.h>
+#include <stdint.h>
+#define _XTAL_FREQ 4000000                  //Definición de frecuencia de oscilación
+#define BUTTON_ADD PORTEbits.RB0           //Definición de bit en Puerto B con nombre coloquial
+#define BUTTON_SUB PORTEbits.RB2           //Definición de bit en Puerto B con nombre coloquial
 
 void main(void) {
+     TRISA = 0x01;              //Definir Puerto A como entrada (Potenciometro)
+     TRISB = 0x01;              //Definir Puerto B como entrada (Botones)
+     TRISC = 0x00;              //Definir Puerto C como salida  (Displays)
+     TRISD = 0x00;              //Definir Puerto D como salida  (Contador)
+     TRISE = 0x01;              //Definir Puerto E como entrada (Alarma)
+     ANSEL = 0x01;              //Datos analogicos
+     ANSELH = 0x00;             //Datps digitales 
+     OSCCON = 0X67;             //Control del oscilador
+     INTCON = 0xFF;             //Habilita interrupciones
+     PIE1 = 0x40;               //Habilita la Interrupcion ADC
+     PIE2 = 0x40;               //Habilita la bandera de Interrupcion ADC
+     IOCB = 0x03;               //Se habilita la interrupcion al cambio en puerto B en RB0 y RB2
+     
+     
     return;
 }

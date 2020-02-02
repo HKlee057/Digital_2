@@ -11,12 +11,12 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\hecto\AppData\Local\Temp\s5lk.o
+$C:\Users\hecto\AppData\Local\Temp\s7ac.o
 end_init CODE 0 0 0 3 2
 config CONFIG 0 2007 2007 2 2
 $dist/default/production\Laboratorio_2.X.production.o
 cinit CODE 0 7FC 7FC 4 2
-maintext CODE 0 7F9 7F9 3 2
+maintext CODE 0 7DE 7DE 1E 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -31,13 +31,13 @@ BANK0 20-6F 1
 BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
-CONST 3-7F8 2
+CONST 3-7DD 2
 CONST 800-1FFF 2
-ENTRY 3-7F8 2
+ENTRY 3-7DD 2
 ENTRY 800-1FFF 2
 IDLOC 2000-2003 2
 STACK 110-16F 1
-CODE 3-7F8 2
+CODE 3-7DD 2
 CODE 800-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
@@ -45,9 +45,9 @@ SFR2 100-10F 1
 SFR3 180-18F 1
 COMMON 70-7D 1
 EEDATA 2100-21FF 2
-STRCODE 3-7F8 2
+STRCODE 3-7DD 2
 STRCODE 800-1FFF 2
-STRING 3-7F8 2
+STRING 3-7DD 2
 STRING 800-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
@@ -63,14 +63,25 @@ STRING 800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Laboratorio_2.X.production.o
-7FC cinit CODE >430:C:\Users\hecto\AppData\Local\Temp\s5lk.s
-7FC cinit CODE >433:C:\Users\hecto\AppData\Local\Temp\s5lk.s
-7FC cinit CODE >439:C:\Users\hecto\AppData\Local\Temp\s5lk.s
-7FC cinit CODE >441:C:\Users\hecto\AppData\Local\Temp\s5lk.s
-7FD cinit CODE >442:C:\Users\hecto\AppData\Local\Temp\s5lk.s
-7F9 maintext CODE >33:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
-7F9 maintext CODE >34:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
-7F9 maintext CODE >35:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+7FC cinit CODE >454:C:\Users\hecto\AppData\Local\Temp\s7ac.s
+7FC cinit CODE >457:C:\Users\hecto\AppData\Local\Temp\s7ac.s
+7FC cinit CODE >463:C:\Users\hecto\AppData\Local\Temp\s7ac.s
+7FC cinit CODE >465:C:\Users\hecto\AppData\Local\Temp\s7ac.s
+7FD cinit CODE >466:C:\Users\hecto\AppData\Local\Temp\s7ac.s
+7DE maintext CODE >37:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+7DE maintext CODE >38:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+7E2 maintext CODE >39:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+7E4 maintext CODE >40:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+7E5 maintext CODE >41:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+7E6 maintext CODE >42:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+7E8 maintext CODE >43:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+7EC maintext CODE >44:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+7ED maintext CODE >45:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+7F1 maintext CODE >46:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+7F3 maintext CODE >47:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+7F5 maintext CODE >48:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+7F7 maintext CODE >49:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+7F9 maintext CODE >53:C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -91,30 +102,36 @@ __Hspace_3 0 0 ABS 0 - -
 __CFG_IESO$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\hecto\AppData\Local\Temp\s5lk.o
-_main FF2 0 CODE 0 maintext dist/default/production\Laboratorio_2.X.production.o
+_IOCB 96 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
+_PIE1 8C 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
+_PIE2 8D 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
+___sp 0 0 STACK 2 stack C:\Users\hecto\AppData\Local\Temp\s7ac.o
+_main FBC 0 CODE 0 maintext dist/default/production\Laboratorio_2.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
-start 0 0 CODE 0 init C:\Users\hecto\AppData\Local\Temp\s5lk.o
+start 0 0 CODE 0 init C:\Users\hecto\AppData\Local\Temp\s7ac.o
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s5lk.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s5lk.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s5lk.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s5lk.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s5lk.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s5lk.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s7ac.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s7ac.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s7ac.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s7ac.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s7ac.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\hecto\AppData\Local\Temp\s7ac.o
 wtemp0 7E 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
 __Hclrtext 0 0 ABS 0 clrtext -
+_ANSELH 189 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
+_INTCON B 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
 __CFG_FOSC$INTRC_CLKOUT 0 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\hecto\AppData\Local\Temp\s5lk.o
-___stacklo 0 0 ABS 0 - C:\Users\hecto\AppData\Local\Temp\s5lk.o
+___stackhi 0 0 ABS 0 - C:\Users\hecto\AppData\Local\Temp\s7ac.o
+___stacklo 0 0 ABS 0 - C:\Users\hecto\AppData\Local\Temp\s7ac.o
 __CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
 __CFG_MCLRE$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
 start_initialization FF8 0 CODE 0 cinit dist/default/production\Laboratorio_2.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\hecto\AppData\Local\Temp\s5lk.o
+_OSCCON 8F 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
+___int_sp 0 0 STACK 2 stack C:\Users\hecto\AppData\Local\Temp\s7ac.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -155,8 +172,8 @@ __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
 __CFG_BOR4V$BOR40V 0 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
 __Lintentry 0 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\hecto\AppData\Local\Temp\s5lk.o
-__pmaintext FF2 0 CODE 0 maintext dist/default/production\Laboratorio_2.X.production.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\hecto\AppData\Local\Temp\s7ac.o
+__pmaintext FBC 0 CODE 0 maintext dist/default/production\Laboratorio_2.X.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 400E 0 CONFIG 0 config -
 __CFG_CP$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
@@ -181,6 +198,12 @@ __Lclrtext 0 0 ABS 0 clrtext -
 __pcstackCOMMON 0 0 COMMON 1 cstackCOMMON dist/default/production\Laboratorio_2.X.production.o
 __Hend_init 6 0 CODE 0 end_init -
 __end_of_main FF8 0 CODE 0 maintext dist/default/production\Laboratorio_2.X.production.o
+_ANSEL 188 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
+_TRISA 85 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
+_TRISB 86 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
+_TRISC 87 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
+_TRISD 88 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
+_TRISE 89 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
 __CFG_CPD$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
@@ -213,7 +236,7 @@ __CFG_WRT$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_2.X.production.o
 # All other numeric quantities are in decimal.
 %SEGMENTS
 cinit 0 7FC FF8 4 2
-maintext 0 7F9 FF2 3 2
+maintext 0 7DE FBC 1E 2
 reset_vec 0 0 0 3 2
 config 0 2007 400E 2 2
 # OTES Section
