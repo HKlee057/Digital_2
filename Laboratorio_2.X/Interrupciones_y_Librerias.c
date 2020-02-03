@@ -44,38 +44,52 @@ void initPorts(void);
 uint8_t add_button=0;        //Variable para incrementar el valor del contador
 uint8_t sub_button=0;        //Variable para decrementar el valor del contador
 uint8_t counter=0;          //Variable de contador
+uint8_t ADC_val=0;          //Variable de ADC
+uint8_t ADC_val_U=0;          //Variable de unidades en display
+uint8_t ADC_val_D=0;          //Variable de decimales en display
 //******************************************************************************
 //Interrupcion
 //******************************************************************************
 void __interrupt() ISR(void){
-    if (INTCONbits.RBIF == 1){
-       /*if (BUTTON_ADD == 1){
-            add_button=1;
-        }*/
-        if (/*add_button == 1 &&*/ BUTTON_ADD == 1){
-            counter++;
-            INTCONbits.RBIF = 0;
+    //Interrupcion por boton
+    if (INTCONbits.RBIF == 1){                  //Verificar si ocurrio la interrupcion
+       if (BUTTON_ADD == 1){                    //Verificar el boton preisonado y activar variable de comparacion
+            add_button=1;               
+            INTCONbits.RBIF = 0;                //Apaga bandera
         }
-        /*if (BUTTON_SUB == 1){
-            sub_button=1;
-        }*/
-        if (/*sub_button == 1 &&*/ BUTTON_SUB == 1){
-            counter--;
-            INTCONbits.RBIF = 0;
+        if (add_button == 1 && BUTTON_ADD == 1){    //Si boton no sigue presionado y variable esta activa
+            counter++;                              //Sumar 1 al valor del contador
+            INTCONbits.RBIF = 0;                    //Limpiar bandera
+        }
+        if (BUTTON_SUB == 1){                       //Verifica el boton presionado
+            sub_button=1;                           //Variable de comparacion
+            INTCONbits.RBIF = 0;                    //Apaga bandera
+        }
+        if (sub_button == 1 && BUTTON_SUB == 1){    //Si boton no sigue presionado y variable esta activa
+            counter--;                              //Restar 1 al valor de contador
+            INTCONbits.RBIF = 0;                    //Limpiar bandera
         }     
+    }
+    //Interrupcion ADC
+    if (PIR1bits.ADIF == 1){                    //Revisa si ocurrio la interrupcion
+        PIR1bits.ADIF = 0;                      //Limpia la badera
+        if (ADCON0bits.GO_nDONE == 0){          //Si la conversion termino realice lo siguiente
+            ADC_val = ADRESH;                   //Guardar valor del ADRESH en una variable
+            ADC_val_U = ADRESH;                 //Guardar los primeros cuatro bits
+            ADC_val_D = ADRESH >> 4;            //Guardar los ultimos cuatro bits
+        }
     }
 }
 //******************************************************************************
 //Funcion Principal
 //******************************************************************************
 void main(void) {
-    /*counter = 0;
-    PORTD = 0;*/
-    initPorts();
+    initPorts();               //Llama a funciones de inicio
     initADCconv();
-    while (1){
-        __delay_ms(10);
-        PORTD = counter;
+    counter = counter;         //Iguala valores de contador
+    while (1){                 //Loop infinto
+        __delay_ms(90);        //Delay para aumentar puerto 
+        PORTD = counter;       //Iguala el Puerto D a la variable del contador
     }
    
     return;

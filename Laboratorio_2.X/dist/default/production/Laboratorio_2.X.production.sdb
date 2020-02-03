@@ -13,11 +13,11 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"50 C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+"53 C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
 [v _ISR ISR `II(v  1 e 1 0 ]
-"71
-[v _main main `(v  1 e 1 0 ]
 "86
+[v _main main `(v  1 e 1 0 ]
+"100
 [v _initPorts initPorts `(v  1 e 1 0 ]
 [s S54 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
@@ -52,8 +52,44 @@
 ]
 [u S36 . 1 `S22 1 . 1 0 `S31 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES36  1 e 1 @11 ]
+[s S75 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+]
+"553
+[u S83 . 1 `S75 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES83  1 e 1 @12 ]
+"1238
+[v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
 "1245
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
+[s S94 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+`uc 1 ADCS 1 0 :2:6 
+]
+"1276
+[s S99 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 ADCS0 1 0 :1:6 
+`uc 1 ADCS1 1 0 :1:7 
+]
+[s S108 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S111 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S114 . 1 `S94 1 . 1 0 `S99 1 . 1 0 `S108 1 . 1 0 `S111 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES114  1 e 1 @31 ]
 "1416
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1478
@@ -76,25 +112,35 @@
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
 [v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
-"46 C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+"44 C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+[v _add_button add_button `uc  1 e 1 0 ]
+"45
+[v _sub_button sub_button `uc  1 e 1 0 ]
+"46
 [v _counter counter `uc  1 e 1 0 ]
-"71
+"47
+[v _ADC_val ADC_val `uc  1 e 1 0 ]
+"48
+[v _ADC_val_U ADC_val_U `uc  1 e 1 0 ]
+"49
+[v _ADC_val_D ADC_val_D `uc  1 e 1 0 ]
+"86
 [v _main main `(v  1 e 1 0 ]
 {
-"82
+"96
 } 0
-"86
+"100
 [v _initPorts initPorts `(v  1 e 1 0 ]
 {
-"97
+"111
 } 0
 "12 C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\ADCInterrupt.c
 [v _initADCconv initADCconv `(v  1 e 1 0 ]
 {
 "16
 } 0
-"50 C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+"53 C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"67
+"82
 } 0

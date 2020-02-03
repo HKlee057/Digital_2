@@ -2665,24 +2665,39 @@ void initPorts(void);
 uint8_t add_button=0;
 uint8_t sub_button=0;
 uint8_t counter=0;
+uint8_t ADC_val=0;
+uint8_t ADC_val_U=0;
+uint8_t ADC_val_D=0;
 
 
 
 void __attribute__((picinterrupt(("")))) ISR(void){
+
     if (INTCONbits.RBIF == 1){
-
-
-
-        if ( PORTBbits.RB1 == 1){
+       if (PORTBbits.RB1 == 1){
+            add_button=1;
+            INTCONbits.RBIF = 0;
+        }
+        if (add_button == 1 && PORTBbits.RB1 == 1){
             counter++;
             INTCONbits.RBIF = 0;
         }
-
-
-
-        if ( PORTBbits.RB2 == 1){
+        if (PORTBbits.RB2 == 1){
+            sub_button=1;
+            INTCONbits.RBIF = 0;
+        }
+        if (sub_button == 1 && PORTBbits.RB2 == 1){
             counter--;
             INTCONbits.RBIF = 0;
+        }
+    }
+
+    if (PIR1bits.ADIF == 1){
+        PIR1bits.ADIF = 0;
+        if (ADCON0bits.GO_nDONE == 0){
+            ADC_val = ADRESH;
+            ADC_val_U = ADRESH;
+            ADC_val_D = ADRESH >> 4;
         }
     }
 }
@@ -2690,12 +2705,11 @@ void __attribute__((picinterrupt(("")))) ISR(void){
 
 
 void main(void) {
-
-
     initPorts();
     initADCconv();
+    counter = counter;
     while (1){
-        _delay((unsigned long)((10)*(8000000/4000.0)));
+        _delay((unsigned long)((90)*(8000000/4000.0)));
         PORTD = counter;
     }
 
