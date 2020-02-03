@@ -13,12 +13,26 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"53 C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+"54 C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
 [v _ISR ISR `II(v  1 e 1 0 ]
-"86
+"92
 [v _main main `(v  1 e 1 0 ]
-"100
+"109
 [v _initPorts initPorts `(v  1 e 1 0 ]
+"59 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
+[v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
+[s S157 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"183
+[u S166 . 1 `S157 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES166  1 e 1 @5 ]
 [s S54 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
@@ -28,7 +42,7 @@
 `uc 1 RB6 1 0 :1:6 
 `uc 1 RB7 1 0 :1:7 
 ]
-"245 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
+"245
 [u S63 . 1 `S54 1 . 1 0 ]
 [v _PORTBbits PORTBbits `VES63  1 e 1 @6 ]
 "352
@@ -90,6 +104,8 @@
 ]
 [u S114 . 1 `S94 1 . 1 0 `S99 1 . 1 0 `S108 1 . 1 0 `S111 1 . 1 0 ]
 [v _ADCON0bits ADCON0bits `VES114  1 e 1 @31 ]
+"1346
+[v _OPTION_REG OPTION_REG `VEuc  1 e 1 @129 ]
 "1416
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1478
@@ -123,24 +139,26 @@
 "48
 [v _ADC_val_U ADC_val_U `uc  1 e 1 0 ]
 "49
+[v _MenSig MenSig `uc  1 e 1 0 ]
+"50
 [v _ADC_val_D ADC_val_D `uc  1 e 1 0 ]
-"86
+"92
 [v _main main `(v  1 e 1 0 ]
 {
-"96
+"105
 } 0
-"100
+"109
 [v _initPorts initPorts `(v  1 e 1 0 ]
 {
-"111
+"122
 } 0
 "12 C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\ADCInterrupt.c
 [v _initADCconv initADCconv `(v  1 e 1 0 ]
 {
 "16
 } 0
-"53 C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
+"54 C:\Users\hecto\Documents\GitHub\Digital_2\Laboratorio_2.X\Interrupciones_y_Librerias.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"82
+"88
 } 0

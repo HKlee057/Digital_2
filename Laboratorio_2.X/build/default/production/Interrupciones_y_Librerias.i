@@ -2667,6 +2667,7 @@ uint8_t sub_button=0;
 uint8_t counter=0;
 uint8_t ADC_val=0;
 uint8_t ADC_val_U=0;
+uint8_t MenSig = 0x0F;
 uint8_t ADC_val_D=0;
 
 
@@ -2696,9 +2697,14 @@ void __attribute__((picinterrupt(("")))) ISR(void){
         PIR1bits.ADIF = 0;
         if (ADCON0bits.GO_nDONE == 0){
             ADC_val = ADRESH;
-            ADC_val_U = ADRESH;
+            ADC_val_U = ADRESH & MenSig;
             ADC_val_D = ADRESH >> 4;
         }
+    }
+
+        if (INTCONbits.T0IF){
+        INTCONbits.T0IF = 0;
+        TMR0 = 156;
     }
 }
 
@@ -2711,6 +2717,9 @@ void main(void) {
     while (1){
         _delay((unsigned long)((90)*(8000000/4000.0)));
         PORTD = counter;
+        if(counter == ADC_val){
+            PORTAbits.RA1 = 1;
+        }
     }
 
     return;
@@ -2729,4 +2738,6 @@ void initPorts(void){
     OSCCON = 0X77;
     INTCON = 0xE8;
     IOCB = 0x03;
+    TMR0 = 156;
+    OPTION_REG = 0x81;
 }

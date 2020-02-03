@@ -46,6 +46,7 @@ uint8_t sub_button=0;        //Variable para decrementar el valor del contador
 uint8_t counter=0;          //Variable de contador
 uint8_t ADC_val=0;          //Variable de ADC
 uint8_t ADC_val_U=0;          //Variable de unidades en display
+uint8_t MenSig = 0x0F;      //Variable para sacar los primeros 4 bits 
 uint8_t ADC_val_D=0;          //Variable de decimales en display
 //******************************************************************************
 //Interrupcion
@@ -75,9 +76,14 @@ void __interrupt() ISR(void){
         PIR1bits.ADIF = 0;                      //Limpia la badera
         if (ADCON0bits.GO_nDONE == 0){          //Si la conversion termino realice lo siguiente
             ADC_val = ADRESH;                   //Guardar valor del ADRESH en una variable
-            ADC_val_U = ADRESH;                 //Guardar los primeros cuatro bits
+            ADC_val_U = ADRESH & MenSig;        //Guardar los primeros cuatro bits
             ADC_val_D = ADRESH >> 4;            //Guardar los ultimos cuatro bits
         }
+    }
+    //Interrupcion Timer0
+        if (INTCONbits.T0IF){                   //Revisa si ocurrio la interrupcion
+        INTCONbits.T0IF = 0;                    //Limpia la badera
+        TMR0 = 156;                             //Asigna valor para desbordar cada 0.2 ms
     }
 }
 //******************************************************************************
@@ -90,6 +96,9 @@ void main(void) {
     while (1){                 //Loop infinto
         __delay_ms(90);        //Delay para aumentar puerto 
         PORTD = counter;       //Iguala el Puerto D a la variable del contador
+        if(counter == ADC_val){
+            PORTAbits.RA1 = 1;
+        }
     }
    
     return;
@@ -108,4 +117,6 @@ void initPorts(void){
     OSCCON = 0X77;             //Control del oscilador
     INTCON = 0xE8;             //Habilita interrupciones
     IOCB = 0x03;               //Se habilita la interrupcion al cambio en puerto B en RB0 y RB2
+    TMR0 = 156;                //Desborde cada 0.2 ms
+    OPTION_REG = 0x81;         //Asignacion de prescaler al Timer0 a 1:4
 }
