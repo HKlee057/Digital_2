@@ -11,6 +11,6 @@
 
 void initADCconv(void) {
     ADCON0 = 0xB7;          //Control de ADC en el bit B5
-    ADCON1 = 0x00;          //Lee el bit menos significativo
-    PIE1 = 0x40;            //Habilita la interrupcion ADC
+    ADCON1 = 0x00;          //Lee el bit mas significativo
+    PIE1 = 0b01000000;            //Habilita la interrupcion ADC
 }

@@ -257,7 +257,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;ADCInterrupt.c: 14:     ADCON1 = 0x00;
 [e = _ADCON1 -> -> 0 `i `uc ]
 "15
-[; ;ADCInterrupt.c: 15:     PIE1 = 0x40;
+[; ;ADCInterrupt.c: 15:     PIE1 = 0b01000000;
 [e = _PIE1 -> -> 64 `i `uc ]
 "16
 [; ;ADCInterrupt.c: 16: }

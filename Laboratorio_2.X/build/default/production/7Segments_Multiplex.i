@@ -2700,5 +2700,6 @@ uint8_t dual7segSetValue(uint8_t val_ADC, uint8_t val_Dis){
         case 0x0F:
             val_Dis = 0x71;
             break;
+        default: val_Dis = 0x3F;
     }
 }

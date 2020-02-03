@@ -58,26 +58,26 @@ uint8_t dummy2 = 0;         //Variable de igualacion
 void __interrupt() ISR(void){
     //Interrupcion por boton
     if (INTCONbits.RBIF == 1){                  //Verificar si ocurrio la interrupcion
-       if (BUTTON_ADD == 1){                    //Verificar el boton preisonado y activar variable de comparacion
-            add_button=1;               
-            INTCONbits.RBIF = 0;                //Apaga bandera
+        if (BUTTON_ADD == 1){                    //Verificar el boton preisonado y activar variable de comparacion
+            add_button=1;  
+            INTCONbits.RBIF = 0;                    //Apaga bandera
         }
-        if (add_button == 1 && BUTTON_ADD == 1){    //Si boton no sigue presionado y variable esta activa
+        if (add_button == 1 && BUTTON_ADD == 0){    //Si boton no sigue presionado y variable esta activa
             counter++;                              //Sumar 1 al valor del contador
-            INTCONbits.RBIF = 0;                    //Limpiar bandera
+            INTCONbits.RBIF = 0;                    //Apaga bandera
         }
         if (BUTTON_SUB == 1){                       //Verifica el boton presionado
             sub_button=1;                           //Variable de comparacion
             INTCONbits.RBIF = 0;                    //Apaga bandera
         }
-        if (sub_button == 1 && BUTTON_SUB == 1){    //Si boton no sigue presionado y variable esta activa
+        if (sub_button == 1 && BUTTON_SUB == 0){    //Si boton no sigue presionado y variable esta activa
             counter--;                              //Restar 1 al valor de contador
-            INTCONbits.RBIF = 0;                    //Limpiar bandera
-        }     
+            INTCONbits.RBIF = 0;                    //Apaga bandera
+        }
     }
     //Interrupcion ADC
-    if (PIR1bits.ADIF == 1){                    //Revisa si ocurrio la interrupcion
-        PIR1bits.ADIF = 0;                      //Limpia la badera
+    if (ADIF){                    //Revisa si ocurrio la interrupcion
+        ADIF = 0;                      //Limpia la badera
         if (ADCON0bits.GO_nDONE == 0){          //Si la conversion termino realice lo siguiente
             ADC_val = ADRESH;                   //Guardar valor del ADRESH en una variable
             ADC_val_U = ADRESH & MenSig;        //Guardar los primeros cuatro bits
@@ -85,8 +85,8 @@ void __interrupt() ISR(void){
         }
     }
     //Interrupcion Timer0
-        if (INTCONbits.T0IF){                   //Revisa si ocurrio la interrupcion
-        INTCONbits.T0IF = 0;                    //Limpia la badera
+    if (TMR0IF){                   //Revisa si ocurrio la interrupcion
+        TMR0IF = 0;                    //Limpia la badera
         TMR0 = 68;                             //Asigna valor para desbordar cada 0.2 ms
         incremento++;
         if (incremento > 1){
@@ -94,14 +94,14 @@ void __interrupt() ISR(void){
         }
         if (incremento == 0){
             PORTAbits.RA6 = 1;
-            //dual7segSetValue(ADC_val_U, dummy1);
-            PORTC = dual7segSetValue(ADC_val_U, dummy1);
+            dual7segSetValue(ADC_val_U, dummy1);
+            PORTC = dummy1;
             PORTAbits.RA7 = 0;          
         }
         if (incremento == 1){
             PORTAbits.RA7 = 1;
-            //dual7segSetValue(ADC_val_D, dummy2);
-            PORTC = dual7segSetValue(ADC_val_D, dummy2);
+            dual7segSetValue(ADC_val_D, dummy2);
+            PORTC = dummy2;
             PORTAbits.RA6 = 0;          
         }
     }
@@ -110,12 +110,9 @@ void __interrupt() ISR(void){
 //Funcion Principal
 //******************************************************************************
 void main(void) {
-    /*PORTAbits.RA1 = 0;
-    PORTAbits.RA6 = 0;
-    PORTAbits.RA7 = 0;*/
     initPorts();               //Llama a funciones de inicio
     initADCconv();
-    counter = counter;         //Iguala valores de contador
+    //counter = counter;         //Iguala valores de contador
     while (1){                 //Loop infinto
         //Codigo para el contador
         __delay_ms(90);        //Delay para aumentar puerto 
@@ -127,8 +124,6 @@ void main(void) {
             PORTAbits.RA1 = 1; //Encender el bit de Alarma
         }
     }
-   
-    return;
 }
 //******************************************************************************
 //Funcion para inicializacion de puertos
@@ -140,7 +135,7 @@ void initPorts(void){
     TRISD = 0x00;              //Definir Puerto D como salida  (Contador)
     TRISE = 0x00;              //Definir Puerto E como salida (Por seguridad)
     ANSEL = 0x00;              //Datos analogicos
-    ANSELH = 0x20;             //Datos analogicos en RB5 
+    ANSELH = 0x08;       //Datos analogicos en RB4 
     OSCCON = 0X77;             //Control del oscilador
     INTCON = 0xE8;             //Habilita interrupciones
     IOCB = 0x03;               //Se habilita la interrupcion al cambio en puerto B en RB0 y RB2

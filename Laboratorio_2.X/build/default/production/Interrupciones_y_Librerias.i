@@ -2688,11 +2688,11 @@ uint8_t dummy2 = 0;
 void __attribute__((picinterrupt(("")))) ISR(void){
 
     if (INTCONbits.RBIF == 1){
-       if (PORTBbits.RB1 == 1){
+        if (PORTBbits.RB1 == 1){
             add_button=1;
             INTCONbits.RBIF = 0;
         }
-        if (add_button == 1 && PORTBbits.RB1 == 1){
+        if (add_button == 1 && PORTBbits.RB1 == 0){
             counter++;
             INTCONbits.RBIF = 0;
         }
@@ -2700,14 +2700,14 @@ void __attribute__((picinterrupt(("")))) ISR(void){
             sub_button=1;
             INTCONbits.RBIF = 0;
         }
-        if (sub_button == 1 && PORTBbits.RB2 == 1){
+        if (sub_button == 1 && PORTBbits.RB2 == 0){
             counter--;
             INTCONbits.RBIF = 0;
         }
     }
 
-    if (PIR1bits.ADIF == 1){
-        PIR1bits.ADIF = 0;
+    if (ADIF){
+        ADIF = 0;
         if (ADCON0bits.GO_nDONE == 0){
             ADC_val = ADRESH;
             ADC_val_U = ADRESH & MenSig;
@@ -2715,8 +2715,8 @@ void __attribute__((picinterrupt(("")))) ISR(void){
         }
     }
 
-        if (INTCONbits.T0IF){
-        INTCONbits.T0IF = 0;
+    if (TMR0IF){
+        TMR0IF = 0;
         TMR0 = 68;
         incremento++;
         if (incremento > 1){
@@ -2724,14 +2724,14 @@ void __attribute__((picinterrupt(("")))) ISR(void){
         }
         if (incremento == 0){
             PORTAbits.RA6 = 1;
-
-            PORTC = dual7segSetValue(ADC_val_U, dummy1);
+            dual7segSetValue(ADC_val_U, dummy1);
+            PORTC = dummy1;
             PORTAbits.RA7 = 0;
         }
         if (incremento == 1){
             PORTAbits.RA7 = 1;
-
-            PORTC = dual7segSetValue(ADC_val_D, dummy2);
+            dual7segSetValue(ADC_val_D, dummy2);
+            PORTC = dummy2;
             PORTAbits.RA6 = 0;
         }
     }
@@ -2740,12 +2740,9 @@ void __attribute__((picinterrupt(("")))) ISR(void){
 
 
 void main(void) {
-
-
-
     initPorts();
     initADCconv();
-    counter = counter;
+
     while (1){
 
         _delay((unsigned long)((90)*(8000000/4000.0)));
@@ -2757,8 +2754,6 @@ void main(void) {
             PORTAbits.RA1 = 1;
         }
     }
-
-    return;
 }
 
 
@@ -2770,7 +2765,7 @@ void initPorts(void){
     TRISD = 0x00;
     TRISE = 0x00;
     ANSEL = 0x00;
-    ANSELH = 0x20;
+    ANSELH = 0x08;
     OSCCON = 0X77;
     INTCON = 0xE8;
     IOCB = 0x03;

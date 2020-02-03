@@ -342,6 +342,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "65
 [e $U 139  ]
 "66
+[e :U 157 ]
+[e = _val_Dis -> -> 63 `i `uc ]
+"67
 }
 [e $U 139  ]
 [e :U 140 ]
@@ -361,8 +364,8 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 13 `i 154
  , $ -> 14 `i 155
  , $ -> 15 `i 156
- 139 ]
+ 157 ]
 [e :U 139 ]
-"67
+"68
 [e :UE 138 ]
 }

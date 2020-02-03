@@ -27,17 +27,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "245
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 245: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x006)));
 [v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
-"543
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 543:     struct {
-[s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S19 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF ]
-"542
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 542: typedef union {
-[u S18 `S19 1 ]
-[n S18 . . ]
-"553
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 553: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x00C)));
-[v _PIR1bits `VS18 ~T0 @X0 0 e@12 ]
+"3587
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 3587: extern volatile __bit ADIF __attribute__((address(0x66)));
+[v _ADIF `Vb ~T0 @X0 0 e@102 ]
 "1251
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 1251:     struct {
 [s S45 :1 `uc 1 :1 `uc 1 :4 `uc 1 :2 `uc 1 ]
@@ -64,6 +56,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1238
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 1238: extern volatile unsigned char ADRESH __attribute__((address(0x01E)));
 [v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
+"4361
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 4361: extern volatile __bit TMR0IF __attribute__((address(0x5A)));
+[v _TMR0IF `Vb ~T0 @X0 0 e@90 ]
 "59
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 59: extern volatile unsigned char TMR0 __attribute__((address(0x001)));
 [v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
@@ -78,11 +73,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "183
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 183: extern volatile PORTAbits_t PORTAbits __attribute__((address(0x005)));
 [v _PORTAbits `VS5 ~T0 @X0 0 e@5 ]
-"290
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 290: extern volatile unsigned char PORTC __attribute__((address(0x007)));
-[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
 "16 ./7Segments_Multiplex.h
 [v _dual7segSetValue `(uc ~T0 @X0 0 ef2`uc`uc ]
+"290 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 290: extern volatile unsigned char PORTC __attribute__((address(0x007)));
+[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
 [p mainexit ]
 "41 Interrupciones_y_Librerias.c
 [; ;Interrupciones_y_Librerias.c: 41: void initPorts(void);
@@ -463,7 +458,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> . . _INTCONbits 0 0 `i -> 1 `i 139  ]
 {
 "61
-[; ;Interrupciones_y_Librerias.c: 61:        if (PORTBbits.RB1 == 1){
+[; ;Interrupciones_y_Librerias.c: 61:         if (PORTBbits.RB1 == 1){
 [e $ ! == -> . . _PORTBbits 0 1 `i -> 1 `i 140  ]
 {
 "62
@@ -477,8 +472,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 140 ]
 "65
-[; ;Interrupciones_y_Librerias.c: 65:         if (add_button == 1 && PORTBbits.RB1 == 1){
-[e $ ! && == -> _add_button `i -> 1 `i == -> . . _PORTBbits 0 1 `i -> 1 `i 141  ]
+[; ;Interrupciones_y_Librerias.c: 65:         if (add_button == 1 && PORTBbits.RB1 == 0){
+[e $ ! && == -> _add_button `i -> 1 `i == -> . . _PORTBbits 0 1 `i -> 0 `i 141  ]
 {
 "66
 [; ;Interrupciones_y_Librerias.c: 66:             counter++;
@@ -505,8 +500,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 142 ]
 "73
-[; ;Interrupciones_y_Librerias.c: 73:         if (sub_button == 1 && PORTBbits.RB2 == 1){
-[e $ ! && == -> _sub_button `i -> 1 `i == -> . . _PORTBbits 0 2 `i -> 1 `i 143  ]
+[; ;Interrupciones_y_Librerias.c: 73:         if (sub_button == 1 && PORTBbits.RB2 == 0){
+[e $ ! && == -> _sub_button `i -> 1 `i == -> . . _PORTBbits 0 2 `i -> 0 `i 143  ]
 {
 "74
 [; ;Interrupciones_y_Librerias.c: 74:             counter--;
@@ -523,12 +518,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 139 ]
 "79
-[; ;Interrupciones_y_Librerias.c: 79:     if (PIR1bits.ADIF == 1){
-[e $ ! == -> . . _PIR1bits 0 6 `i -> 1 `i 144  ]
+[; ;Interrupciones_y_Librerias.c: 79:     if (ADIF){
+[e $ ! _ADIF 144  ]
 {
 "80
-[; ;Interrupciones_y_Librerias.c: 80:         PIR1bits.ADIF = 0;
-[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+[; ;Interrupciones_y_Librerias.c: 80:         ADIF = 0;
+[e = _ADIF -> -> 0 `i `b ]
 "81
 [; ;Interrupciones_y_Librerias.c: 81:         if (ADCON0bits.GO_nDONE == 0){
 [e $ ! == -> . . _ADCON0bits 0 1 `i -> 0 `i 145  ]
@@ -551,12 +546,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 144 ]
 "88
-[; ;Interrupciones_y_Librerias.c: 88:         if (INTCONbits.T0IF){
-[e $ ! != -> . . _INTCONbits 0 2 `i -> 0 `i 146  ]
+[; ;Interrupciones_y_Librerias.c: 88:     if (TMR0IF){
+[e $ ! _TMR0IF 146  ]
 {
 "89
-[; ;Interrupciones_y_Librerias.c: 89:         INTCONbits.T0IF = 0;
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;Interrupciones_y_Librerias.c: 89:         TMR0IF = 0;
+[e = _TMR0IF -> -> 0 `i `b ]
 "90
 [; ;Interrupciones_y_Librerias.c: 90:         TMR0 = 68;
 [e = _TMR0 -> -> 68 `i `uc ]
@@ -581,9 +576,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "96
 [; ;Interrupciones_y_Librerias.c: 96:             PORTAbits.RA6 = 1;
 [e = . . _PORTAbits 0 6 -> -> 1 `i `uc ]
+"97
+[; ;Interrupciones_y_Librerias.c: 97:             dual7segSetValue(ADC_val_U, dummy1);
+[e ( _dual7segSetValue (2 , _ADC_val_U _dummy1 ]
 "98
-[; ;Interrupciones_y_Librerias.c: 98:             PORTC = dual7segSetValue(ADC_val_U, dummy1);
-[e = _PORTC ( _dual7segSetValue (2 , _ADC_val_U _dummy1 ]
+[; ;Interrupciones_y_Librerias.c: 98:             PORTC = dummy1;
+[e = _PORTC _dummy1 ]
 "99
 [; ;Interrupciones_y_Librerias.c: 99:             PORTAbits.RA7 = 0;
 [e = . . _PORTAbits 0 7 -> -> 0 `i `uc ]
@@ -598,9 +596,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "102
 [; ;Interrupciones_y_Librerias.c: 102:             PORTAbits.RA7 = 1;
 [e = . . _PORTAbits 0 7 -> -> 1 `i `uc ]
+"103
+[; ;Interrupciones_y_Librerias.c: 103:             dual7segSetValue(ADC_val_D, dummy2);
+[e ( _dual7segSetValue (2 , _ADC_val_D _dummy2 ]
 "104
-[; ;Interrupciones_y_Librerias.c: 104:             PORTC = dual7segSetValue(ADC_val_D, dummy2);
-[e = _PORTC ( _dual7segSetValue (2 , _ADC_val_D _dummy2 ]
+[; ;Interrupciones_y_Librerias.c: 104:             PORTC = dummy2;
+[e = _PORTC _dummy2 ]
 "105
 [; ;Interrupciones_y_Librerias.c: 105:             PORTAbits.RA6 = 0;
 [e = . . _PORTAbits 0 6 -> -> 0 `i `uc ]
@@ -623,95 +624,89 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _main ]
 [f ]
-"116
-[; ;Interrupciones_y_Librerias.c: 116:     initPorts();
+"113
+[; ;Interrupciones_y_Librerias.c: 113:     initPorts();
 [e ( _initPorts ..  ]
-"117
-[; ;Interrupciones_y_Librerias.c: 117:     initADCconv();
+"114
+[; ;Interrupciones_y_Librerias.c: 114:     initADCconv();
 [e ( _initADCconv ..  ]
-"118
-[; ;Interrupciones_y_Librerias.c: 118:     counter = counter;
-[e = _counter _counter ]
-"119
-[; ;Interrupciones_y_Librerias.c: 119:     while (1){
+"116
+[; ;Interrupciones_y_Librerias.c: 116:     while (1){
 [e :U 152 ]
 {
-"121
-[; ;Interrupciones_y_Librerias.c: 121:         _delay((unsigned long)((90)*(8000000/4000.0)));
+"118
+[; ;Interrupciones_y_Librerias.c: 118:         _delay((unsigned long)((90)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 90 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"122
-[; ;Interrupciones_y_Librerias.c: 122:         PORTD = counter;
+"119
+[; ;Interrupciones_y_Librerias.c: 119:         PORTD = counter;
 [e = _PORTD _counter ]
-"124
-[; ;Interrupciones_y_Librerias.c: 124:         ADCON0bits.GO_nDONE = 1;
+"121
+[; ;Interrupciones_y_Librerias.c: 121:         ADCON0bits.GO_nDONE = 1;
 [e = . . _ADCON0bits 0 1 -> -> 1 `i `uc ]
-"126
-[; ;Interrupciones_y_Librerias.c: 126:         if(ADC_val > counter){
+"123
+[; ;Interrupciones_y_Librerias.c: 123:         if(ADC_val > counter){
 [e $ ! > -> _ADC_val `i -> _counter `i 154  ]
 {
-"127
-[; ;Interrupciones_y_Librerias.c: 127:             PORTAbits.RA1 = 1;
+"124
+[; ;Interrupciones_y_Librerias.c: 124:             PORTAbits.RA1 = 1;
 [e = . . _PORTAbits 0 1 -> -> 1 `i `uc ]
-"128
-[; ;Interrupciones_y_Librerias.c: 128:         }
+"125
+[; ;Interrupciones_y_Librerias.c: 125:         }
 }
 [e :U 154 ]
-"129
-[; ;Interrupciones_y_Librerias.c: 129:     }
+"126
+[; ;Interrupciones_y_Librerias.c: 126:     }
 }
 [e :U 151 ]
 [e $U 152  ]
 [e :U 153 ]
-"131
-[; ;Interrupciones_y_Librerias.c: 131:     return;
-[e $UE 150  ]
-"132
-[; ;Interrupciones_y_Librerias.c: 132: }
+"127
+[; ;Interrupciones_y_Librerias.c: 127: }
 [e :UE 150 ]
 }
-"136
-[; ;Interrupciones_y_Librerias.c: 136: void initPorts(void){
+"131
+[; ;Interrupciones_y_Librerias.c: 131: void initPorts(void){
 [v _initPorts `(v ~T0 @X0 1 ef ]
 {
 [e :U _initPorts ]
 [f ]
-"137
-[; ;Interrupciones_y_Librerias.c: 137:     TRISA = 0x00;
+"132
+[; ;Interrupciones_y_Librerias.c: 132:     TRISA = 0x00;
 [e = _TRISA -> -> 0 `i `uc ]
-"138
-[; ;Interrupciones_y_Librerias.c: 138:     TRISB = 0xFF;
+"133
+[; ;Interrupciones_y_Librerias.c: 133:     TRISB = 0xFF;
 [e = _TRISB -> -> 255 `i `uc ]
-"139
-[; ;Interrupciones_y_Librerias.c: 139:     TRISC = 0x00;
+"134
+[; ;Interrupciones_y_Librerias.c: 134:     TRISC = 0x00;
 [e = _TRISC -> -> 0 `i `uc ]
-"140
-[; ;Interrupciones_y_Librerias.c: 140:     TRISD = 0x00;
+"135
+[; ;Interrupciones_y_Librerias.c: 135:     TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
-"141
-[; ;Interrupciones_y_Librerias.c: 141:     TRISE = 0x00;
+"136
+[; ;Interrupciones_y_Librerias.c: 136:     TRISE = 0x00;
 [e = _TRISE -> -> 0 `i `uc ]
-"142
-[; ;Interrupciones_y_Librerias.c: 142:     ANSEL = 0x00;
+"137
+[; ;Interrupciones_y_Librerias.c: 137:     ANSEL = 0x00;
 [e = _ANSEL -> -> 0 `i `uc ]
-"143
-[; ;Interrupciones_y_Librerias.c: 143:     ANSELH = 0x20;
-[e = _ANSELH -> -> 32 `i `uc ]
-"144
-[; ;Interrupciones_y_Librerias.c: 144:     OSCCON = 0X77;
+"138
+[; ;Interrupciones_y_Librerias.c: 138:     ANSELH = 0x08;
+[e = _ANSELH -> -> 8 `i `uc ]
+"139
+[; ;Interrupciones_y_Librerias.c: 139:     OSCCON = 0X77;
 [e = _OSCCON -> -> 119 `i `uc ]
-"145
-[; ;Interrupciones_y_Librerias.c: 145:     INTCON = 0xE8;
+"140
+[; ;Interrupciones_y_Librerias.c: 140:     INTCON = 0xE8;
 [e = _INTCON -> -> 232 `i `uc ]
-"146
-[; ;Interrupciones_y_Librerias.c: 146:     IOCB = 0x03;
+"141
+[; ;Interrupciones_y_Librerias.c: 141:     IOCB = 0x03;
 [e = _IOCB -> -> 3 `i `uc ]
-"147
-[; ;Interrupciones_y_Librerias.c: 147:     TMR0 = 68;
+"142
+[; ;Interrupciones_y_Librerias.c: 142:     TMR0 = 68;
 [e = _TMR0 -> -> 68 `i `uc ]
-"148
-[; ;Interrupciones_y_Librerias.c: 148:     OPTION_REG = 0x84;
+"143
+[; ;Interrupciones_y_Librerias.c: 143:     OPTION_REG = 0x84;
 [e = _OPTION_REG -> -> 132 `i `uc ]
-"149
-[; ;Interrupciones_y_Librerias.c: 149: }
+"144
+[; ;Interrupciones_y_Librerias.c: 144: }
 [e :UE 155 ]
 }

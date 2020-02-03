@@ -2515,5 +2515,5 @@ void initADCconv(void);
 void initADCconv(void) {
     ADCON0 = 0xB7;
     ADCON1 = 0x00;
-    PIE1 = 0x40;
+    PIE1 = 0b01000000;
 }
