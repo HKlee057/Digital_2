@@ -9,6 +9,7 @@
 //******************************************************************************
 #include <xc.h>
 #include <stdint.h>
+#include "ADCInterrupt.h"
 //******************************************************************************
 //Palabra de Configuracion
 //******************************************************************************
@@ -71,6 +72,7 @@ void main(void) {
     /*counter = 0;
     PORTD = 0;*/
     initPorts();
+    initADCconv();
     while (1){
         __delay_ms(10);
         PORTD = counter;
@@ -82,15 +84,14 @@ void main(void) {
 //Funcion para inicializacion de puertos
 //******************************************************************************
 void initPorts(void){
-    TRISA = 0x00;              //Definir Puerto A como entrada (Potenciometro)
-    TRISB = 0xFF;              //Definir Puerto B como entrada (Botones)
-    TRISC = 0x00;              //Definir Puerto C como salida  (Contador)
+    TRISA = 0x00;              //Definir Puerto A como salida (Alarma)
+    TRISB = 0xFF;              //Definir Puerto B como entrada (Botones y potenciometro)
+    TRISC = 0x00;              //Definir Puerto C como salida  (Display)
     TRISD = 0x00;              //Definir Puerto D como salida  (Contador)
-    TRISE = 0x00;              //Definir Puerto E como salida (Alarma)
+    TRISE = 0x00;              //Definir Puerto E como salida (Por seguridad)
     ANSEL = 0x00;              //Datos analogicos
     ANSELH = 0x20;             //Datos analogicos en RB5 
     OSCCON = 0X77;             //Control del oscilador
     INTCON = 0xE8;             //Habilita interrupciones
-    PIE1 = 0x40;               //Habilita la Interrupcion ADC
     IOCB = 0x03;               //Se habilita la interrupcion al cambio en puerto B en RB0 y RB2
 }
