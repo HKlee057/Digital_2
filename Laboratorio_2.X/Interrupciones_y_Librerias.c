@@ -10,6 +10,7 @@
 #include <xc.h>
 #include <stdint.h>
 #include "ADCInterrupt.h"
+#include "7Segments_Multiplex.h"
 //******************************************************************************
 //Palabra de Configuracion
 //******************************************************************************
@@ -92,6 +93,7 @@ void __interrupt() ISR(void){
 void main(void) {
     initPorts();               //Llama a funciones de inicio
     initADCconv();
+    SegMultiplex();
     counter = counter;         //Iguala valores de contador
     while (1){                 //Loop infinto
         __delay_ms(90);        //Delay para aumentar puerto 

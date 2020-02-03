@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=Interrupciones_y_Librerias.c ADCInterrupt.c
+SOURCEFILES_QUOTED_IF_SPACED=Interrupciones_y_Librerias.c ADCInterrupt.c 7Segments_Multiplex.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Interrupciones_y_Librerias.p1 ${OBJECTDIR}/ADCInterrupt.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/Interrupciones_y_Librerias.p1.d ${OBJECTDIR}/ADCInterrupt.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Interrupciones_y_Librerias.p1 ${OBJECTDIR}/ADCInterrupt.p1 ${OBJECTDIR}/7Segments_Multiplex.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/Interrupciones_y_Librerias.p1.d ${OBJECTDIR}/ADCInterrupt.p1.d ${OBJECTDIR}/7Segments_Multiplex.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/Interrupciones_y_Librerias.p1 ${OBJECTDIR}/ADCInterrupt.p1
+OBJECTFILES=${OBJECTDIR}/Interrupciones_y_Librerias.p1 ${OBJECTDIR}/ADCInterrupt.p1 ${OBJECTDIR}/7Segments_Multiplex.p1
 
 # Source Files
-SOURCEFILES=Interrupciones_y_Librerias.c ADCInterrupt.c
+SOURCEFILES=Interrupciones_y_Librerias.c ADCInterrupt.c 7Segments_Multiplex.c
 
 
 
@@ -110,6 +110,14 @@ ${OBJECTDIR}/ADCInterrupt.p1: ADCInterrupt.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/ADCInterrupt.d ${OBJECTDIR}/ADCInterrupt.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ADCInterrupt.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/7Segments_Multiplex.p1: 7Segments_Multiplex.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/7Segments_Multiplex.p1.d 
+	@${RM} ${OBJECTDIR}/7Segments_Multiplex.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/7Segments_Multiplex.p1 7Segments_Multiplex.c 
+	@-${MV} ${OBJECTDIR}/7Segments_Multiplex.d ${OBJECTDIR}/7Segments_Multiplex.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/7Segments_Multiplex.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/Interrupciones_y_Librerias.p1: Interrupciones_y_Librerias.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -126,6 +134,14 @@ ${OBJECTDIR}/ADCInterrupt.p1: ADCInterrupt.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/ADCInterrupt.p1 ADCInterrupt.c 
 	@-${MV} ${OBJECTDIR}/ADCInterrupt.d ${OBJECTDIR}/ADCInterrupt.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ADCInterrupt.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/7Segments_Multiplex.p1: 7Segments_Multiplex.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/7Segments_Multiplex.p1.d 
+	@${RM} ${OBJECTDIR}/7Segments_Multiplex.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/7Segments_Multiplex.p1 7Segments_Multiplex.c 
+	@-${MV} ${OBJECTDIR}/7Segments_Multiplex.d ${OBJECTDIR}/7Segments_Multiplex.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/7Segments_Multiplex.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

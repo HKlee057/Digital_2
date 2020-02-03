@@ -1,4 +1,4 @@
-# 1 "Interrupciones_y_Librerias.c"
+# 1 "7Segments_Multiplex.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,15 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Interrupciones_y_Librerias.c" 2
-# 10 "Interrupciones_y_Librerias.c"
+# 1 "7Segments_Multiplex.c" 2
+
+
+
+
+
+
+
+
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2492,262 +2499,9 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 10 "Interrupciones_y_Librerias.c" 2
+# 9 "7Segments_Multiplex.c" 2
 
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
-# 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int8_t;
 
-
-
-
-
-
-typedef signed int int16_t;
-
-
-
-
-
-
-
-typedef __int24 int24_t;
-
-
-
-
-
-
-
-typedef signed long int int32_t;
-# 52 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint8_t;
-
-
-
-
-
-typedef unsigned int uint16_t;
-
-
-
-
-
-
-typedef __uint24 uint24_t;
-
-
-
-
-
-
-typedef unsigned long int uint32_t;
-# 88 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_least8_t;
-
-
-
-
-
-
-
-typedef signed int int_least16_t;
-# 109 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_least24_t;
-# 118 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed long int int_least32_t;
-# 136 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_least8_t;
-
-
-
-
-
-
-typedef unsigned int uint_least16_t;
-# 154 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_least24_t;
-
-
-
-
-
-
-
-typedef unsigned long int uint_least32_t;
-# 181 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef signed char int_fast8_t;
-
-
-
-
-
-
-typedef signed int int_fast16_t;
-# 200 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __int24 int_fast24_t;
-
-
-
-
-
-
-
-typedef signed long int int_fast32_t;
-# 224 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef unsigned char uint_fast8_t;
-
-
-
-
-
-typedef unsigned int uint_fast16_t;
-# 240 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef __uint24 uint_fast24_t;
-
-
-
-
-
-
-typedef unsigned long int uint_fast32_t;
-# 268 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef int32_t intmax_t;
-# 282 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
-typedef uint32_t uintmax_t;
-
-
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-# 11 "Interrupciones_y_Librerias.c" 2
-
-# 1 "./ADCInterrupt.h" 1
-# 11 "./ADCInterrupt.h"
-#pragma config FOSC = INTRC_NOCLKOUT
-
-
-
-
-void initADCconv(void);
-# 12 "Interrupciones_y_Librerias.c" 2
-
-# 1 "./7Segments_Multiplex.h" 1
-# 11 "./7Segments_Multiplex.h"
-#pragma config FOSC = INTRC_NOCLKOUT
-
-
-
-void SegMultiplex(void);
-# 13 "Interrupciones_y_Librerias.c" 2
-
-
-
-
-
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-# 41 "Interrupciones_y_Librerias.c"
-void initPorts(void);
-
-
-
-uint8_t add_button=0;
-uint8_t sub_button=0;
-uint8_t counter=0;
-uint8_t ADC_val=0;
-uint8_t ADC_val_U=0;
-uint8_t MenSig = 0x0F;
-uint8_t ADC_val_D=0;
-
-
-
-void __attribute__((picinterrupt(("")))) ISR(void){
-
-    if (INTCONbits.RBIF == 1){
-       if (PORTBbits.RB1 == 1){
-            add_button=1;
-            INTCONbits.RBIF = 0;
-        }
-        if (add_button == 1 && PORTBbits.RB1 == 1){
-            counter++;
-            INTCONbits.RBIF = 0;
-        }
-        if (PORTBbits.RB2 == 1){
-            sub_button=1;
-            INTCONbits.RBIF = 0;
-        }
-        if (sub_button == 1 && PORTBbits.RB2 == 1){
-            counter--;
-            INTCONbits.RBIF = 0;
-        }
-    }
-
-    if (PIR1bits.ADIF == 1){
-        PIR1bits.ADIF = 0;
-        if (ADCON0bits.GO_nDONE == 0){
-            ADC_val = ADRESH;
-            ADC_val_U = ADRESH & MenSig;
-            ADC_val_D = ADRESH >> 4;
-        }
-    }
-
-        if (INTCONbits.T0IF){
-        INTCONbits.T0IF = 0;
-        TMR0 = 156;
-    }
-}
-
-
-
-void main(void) {
-    initPorts();
-    initADCconv();
-    SegMultiplex();
-    counter = counter;
-    while (1){
-        _delay((unsigned long)((90)*(8000000/4000.0)));
-        PORTD = counter;
-        if(counter == ADC_val){
-            PORTAbits.RA1 = 1;
-        }
-    }
-
+void SegMultiplex(void) {
     return;
-}
-
-
-
-void initPorts(void){
-    TRISA = 0x00;
-    TRISB = 0xFF;
-    TRISC = 0x00;
-    TRISD = 0x00;
-    TRISE = 0x00;
-    ANSEL = 0x00;
-    ANSELH = 0x20;
-    OSCCON = 0X77;
-    INTCON = 0xE8;
-    IOCB = 0x03;
-    TMR0 = 156;
-    OPTION_REG = 0x81;
 }
