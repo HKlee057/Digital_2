@@ -46,9 +46,12 @@ uint8_t add_button=0;        //Variable para incrementar el valor del contador
 uint8_t sub_button=0;        //Variable para decrementar el valor del contador
 uint8_t counter=0;          //Variable de contador
 uint8_t ADC_val=0;          //Variable de ADC
-uint8_t ADC_val_U=0;          //Variable de unidades en display
+uint8_t ADC_val_U=0;        //Variable de unidades en display
 uint8_t MenSig = 0x0F;      //Variable para sacar los primeros 4 bits 
-uint8_t ADC_val_D=0;          //Variable de decimales en display
+uint8_t ADC_val_D=0;        //Variable de decimales en display
+uint8_t incremento = 0;     //Conteo cada x ms
+uint8_t dummy1 = 0;         //Variable de igualacion
+uint8_t dummy2 = 0;         //Variable de igualacion
 //******************************************************************************
 //Interrupcion
 //******************************************************************************
@@ -84,22 +87,44 @@ void __interrupt() ISR(void){
     //Interrupcion Timer0
         if (INTCONbits.T0IF){                   //Revisa si ocurrio la interrupcion
         INTCONbits.T0IF = 0;                    //Limpia la badera
-        TMR0 = 156;                             //Asigna valor para desbordar cada 0.2 ms
+        TMR0 = 68;                             //Asigna valor para desbordar cada 0.2 ms
+        incremento++;
+        if (incremento > 1){
+            incremento = 0;
+        }
+        if (incremento == 0){
+            PORTAbits.RA6 = 1;
+            //dual7segSetValue(ADC_val_U, dummy1);
+            PORTC = dual7segSetValue(ADC_val_U, dummy1);
+            PORTAbits.RA7 = 0;          
+        }
+        if (incremento == 1){
+            PORTAbits.RA7 = 1;
+            //dual7segSetValue(ADC_val_D, dummy2);
+            PORTC = dual7segSetValue(ADC_val_D, dummy2);
+            PORTAbits.RA6 = 0;          
+        }
     }
 }
 //******************************************************************************
 //Funcion Principal
 //******************************************************************************
 void main(void) {
+    /*PORTAbits.RA1 = 0;
+    PORTAbits.RA6 = 0;
+    PORTAbits.RA7 = 0;*/
     initPorts();               //Llama a funciones de inicio
     initADCconv();
-    SegMultiplex();
     counter = counter;         //Iguala valores de contador
     while (1){                 //Loop infinto
+        //Codigo para el contador
         __delay_ms(90);        //Delay para aumentar puerto 
         PORTD = counter;       //Iguala el Puerto D a la variable del contador
-        if(counter == ADC_val){
-            PORTAbits.RA1 = 1;
+        //Conversion ADC
+        ADCON0bits.GO_nDONE = 1;
+        //Codigo para la alarma
+        if(ADC_val > counter){ //Si el valor del ADC es mayor al del contador
+            PORTAbits.RA1 = 1; //Encender el bit de Alarma
         }
     }
    
@@ -119,6 +144,7 @@ void initPorts(void){
     OSCCON = 0X77;             //Control del oscilador
     INTCON = 0xE8;             //Habilita interrupciones
     IOCB = 0x03;               //Se habilita la interrupcion al cambio en puerto B en RB0 y RB2
-    TMR0 = 156;                //Desborde cada 0.2 ms
-    OPTION_REG = 0x81;         //Asignacion de prescaler al Timer0 a 1:4
+    TMR0 = 68;                //Desborde cada 0.2 ms
+    OPTION_REG = 0x84;         //Asignacion de prescaler al Timer0 a 1:32
 }
+

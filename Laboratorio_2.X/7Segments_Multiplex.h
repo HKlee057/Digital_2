@@ -12,7 +12,8 @@
 
 #include <xc.h>
 
-void SegMultiplex(void);
+
+uint8_t dual7segSetValue(uint8_t val_ADC, uint8_t val_Dis);
 
 #endif	/* 7SEGMENTS_MULTIPLEX_H */
 

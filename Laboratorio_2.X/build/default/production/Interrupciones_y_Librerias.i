@@ -2645,7 +2645,8 @@ void initADCconv(void);
 
 
 
-void SegMultiplex(void);
+
+uint8_t dual7segSetValue(uint8_t val_ADC, uint8_t val_Dis);
 # 13 "Interrupciones_y_Librerias.c" 2
 
 
@@ -2678,6 +2679,9 @@ uint8_t ADC_val=0;
 uint8_t ADC_val_U=0;
 uint8_t MenSig = 0x0F;
 uint8_t ADC_val_D=0;
+uint8_t incremento = 0;
+uint8_t dummy1 = 0;
+uint8_t dummy2 = 0;
 
 
 
@@ -2713,21 +2717,43 @@ void __attribute__((picinterrupt(("")))) ISR(void){
 
         if (INTCONbits.T0IF){
         INTCONbits.T0IF = 0;
-        TMR0 = 156;
+        TMR0 = 68;
+        incremento++;
+        if (incremento > 1){
+            incremento = 0;
+        }
+        if (incremento == 0){
+            PORTAbits.RA6 = 1;
+
+            PORTC = dual7segSetValue(ADC_val_U, dummy1);
+            PORTAbits.RA7 = 0;
+        }
+        if (incremento == 1){
+            PORTAbits.RA7 = 1;
+
+            PORTC = dual7segSetValue(ADC_val_D, dummy2);
+            PORTAbits.RA6 = 0;
+        }
     }
 }
 
 
 
 void main(void) {
+
+
+
     initPorts();
     initADCconv();
-    SegMultiplex();
     counter = counter;
     while (1){
+
         _delay((unsigned long)((90)*(8000000/4000.0)));
         PORTD = counter;
-        if(counter == ADC_val){
+
+        ADCON0bits.GO_nDONE = 1;
+
+        if(ADC_val > counter){
             PORTAbits.RA1 = 1;
         }
     }
@@ -2748,6 +2774,6 @@ void initPorts(void){
     OSCCON = 0X77;
     INTCON = 0xE8;
     IOCB = 0x03;
-    TMR0 = 156;
-    OPTION_REG = 0x81;
+    TMR0 = 68;
+    OPTION_REG = 0x84;
 }
