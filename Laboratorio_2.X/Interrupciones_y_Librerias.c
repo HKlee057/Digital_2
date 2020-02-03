@@ -4,11 +4,23 @@
  *
  * Created on 1 de febrero de 2020, 06:44 PM
  */
+<<<<<<< Updated upstream
 
 // PIC16F887 Configuration Bit Settings
 
 // 'C' source line config statements
 
+=======
+//******************************************************************************
+//Librerias
+//******************************************************************************
+#include <xc.h>
+#include <stdint.h>
+#include "ADCInterrupt.h"
+//******************************************************************************
+//Palabra de Configuracion
+//******************************************************************************
+>>>>>>> Stashed changes
 // CONFIG1
 #pragma config FOSC = INTRC_CLKOUT// Oscillator Selection bits (INTOSC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN)
 #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled and can be enabled by SWDTEN bit of the WDTCON register)
@@ -24,6 +36,7 @@
 // CONFIG2
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
+<<<<<<< Updated upstream
 
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
@@ -51,3 +64,76 @@ void main(void) {
      
     return;
 }
+=======
+//******************************************************************************
+//Definiciones extra
+//******************************************************************************
+#define _XTAL_FREQ 8000000                  //Definición de frecuencia de oscilación
+#define BUTTON_ADD PORTBbits.RB1           //Definición de bit en Puerto B con nombre coloquial
+#define BUTTON_SUB PORTBbits.RB2           //Definición de bit en Puerto B con nombre coloquial
+//******************************************************************************
+//Funciones prototipo
+//******************************************************************************
+void initPorts(void);
+//******************************************************************************
+//Variables
+//******************************************************************************
+uint8_t add_button=0;        //Variable para incrementar el valor del contador
+uint8_t sub_button=0;        //Variable para decrementar el valor del contador
+uint8_t counter=0;          //Variable de contador
+//******************************************************************************
+//Interrupcion
+//******************************************************************************
+void __interrupt() ISR(void){
+    if (INTCONbits.RBIF == 1){
+       if (BUTTON_ADD == 1){
+            add_button=1;
+            INTCONbits.RBIF = 0;
+        }
+        if (add_button == 1 && BUTTON_ADD == 0){
+            add_button = 0;
+            counter++;
+            INTCONbits.RBIF = 0;
+        }
+        if (BUTTON_SUB == 1){
+            sub_button=1;
+            INTCONbits.RBIF = 0;
+        }
+        if (sub_button == 1 && BUTTON_SUB == 0){
+            sub_button = 0;
+            counter--;
+            INTCONbits.RBIF = 0;
+        }     
+    }
+}
+//******************************************************************************
+//Funcion Principal
+//******************************************************************************
+void main(void) {
+    /*counter = 0;
+    PORTD = 0;*/
+    initPorts();
+    while (1){
+        counter = counter;
+        __delay_ms(90);
+        PORTD = counter;
+    }
+   
+    return;
+}
+//******************************************************************************
+//Funcion para inicializacion de puertos
+//******************************************************************************
+void initPorts(void){
+    TRISA = 0x00;              //Definir Puerto A como salida (Alarma)
+    TRISB = 0xFF;              //Definir Puerto B como entrada (Botones y potenciometro)
+    TRISC = 0x00;              //Definir Puerto C como salida  (Display)
+    TRISD = 0x00;              //Definir Puerto D como salida  (Contador)
+    TRISE = 0x00;              //Definir Puerto E como salida (Por seguridad)
+    ANSEL = 0x00;              //Datos analogicos
+    ANSELH = 0x20;             //Datos analogicos en RB5 
+    OSCCON = 0x77;             //Control del oscilador
+    INTCON = 0xE8;             //Habilita interrupciones
+    IOCB = 0x03;               //Se habilita la interrupcion al cambio en puerto B en RB0 y RB2
+}
+>>>>>>> Stashed changes
